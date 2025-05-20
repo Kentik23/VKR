@@ -372,3 +372,145 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+
+/* styles.css additions for builder */
+.builder__title {
+  margin-bottom: 16px;
+}
+.flower-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.flower-search input {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--radius);
+  border: none;
+  box-shadow: var(--shadow);
+}
+.flower-search .search__icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}
+.builder__right-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.checkout-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 14px;
+}
+.help-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  margin-left: 8px;
+}
+
+
+
+
+.builder {
+  display: flex;
+  gap: 40px;
+  padding: 40px 0;
+}
+.builder__left, .builder__right {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.builder__left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.flower-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.flower-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.flower-card__img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.flower-card__info {
+  flex: 1;
+}
+.flower-card__name {
+  font-family: var(--font-heading);
+}
+.flower-card__price {
+  font-size: 14px;
+  color: #666;
+}
+.flower-card__quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.builder__options {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.builder__options select {
+  padding: 8px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: none;
+  font-size: 14px;
+}
+
+.builder__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.bouquet-composition {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.bouquet-composition li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+.bouquet-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bouquet-summary p {
+  font-size: 16px;
+}
+.bouquet-summary .total-price {
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
