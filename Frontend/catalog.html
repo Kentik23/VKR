@@ -50,34 +50,22 @@
       <!-- Catalog Section -->
       <section id="flowers" class="products">
         <h2 class="products__title">Каталог</h2>
+
         <!-- Controls -->
         <div class="catalog-controls">
-          <div class="control-sort">Сортировка по цене</div>
+          <div class="control-sort">
+            <img src="img/sort.svg" alt="Сортировка" class="control__icon">
+            <span>Сортировка по цене</span>
+          </div>
           <label class="control-checkbox">
             <input type="checkbox"> Уже собраны
           </label>
         </div>
-        <div class="products__grid">
-          <!-- Пример карточки -->
+
+        <!-- Grid 4 columns always -->
+        <div class="products__grid grid-4">
+          <!-- Карточки товара -->
           <div class="card">
-            <img src="products/product1.jpg" alt="Романтика роз">
-            <h3 class="card__title">Романтика роз</h3>
-            <p class="card__price">2 800 ₽</p>
-            <button class="card__btn">В корзину</button>
-          </div>
-          <div class="card">
-            <img src="products/product1.jpg" alt="Романтика роз">
-            <h3 class="card__title">Романтика роз</h3>
-            <p class="card__price">2 800 ₽</p>
-            <button class="card__btn">В корзину</button>
-          </div>
-          <div class="card">
-            <img src="products/product1.jpg" alt="Романтика роз">
-            <h3 class="card__title">Романтика роз</h3>
-            <p class="card__price">2 800 ₽</p>
-            <button class="card__btn">В корзину</button>
-          </div>
-		  <div class="card">
             <img src="products/product1.jpg" alt="Романтика роз">
             <h3 class="card__title">Романтика роз</h3>
             <p class="card__price">2 800 ₽</p>
@@ -85,6 +73,7 @@
           </div>
           <!-- Повторять карточки -->
         </div>
+
         <!-- Pagination -->
         <div class="pagination">
           <a href="#" class="page active">1</a>
