@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — Веточка</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="main">
+    <!-- Header -->
+    <header class="header fullwidth">
+      <div class="container">
+        <div class="header__left">
+          <img src="img/logo.jpg" alt="Веточка" class="logo">
+          <span class="shop-name">Веточка</span>
+          <div class="contact">
+            <span class="contact__label">Свяжитесь с нами</span>
+            <a href="tel:+79807729712" class="contact__phone">+7 (980) 772 97-12</a>
+          </div>
+        </div>
+        <div class="header__center">
+          <div class="search">
+            <input type="text" placeholder="Поиск">
+            <img src="img/loupe.svg" alt="Поиск" class="search__icon">
+          </div>
+        </div>
+        <div class="header__right">
+          <a href="#" class="icon-profile" aria-label="Профиль"></a>
+          <a href="#" class="icon-cart" aria-label="Корзина"></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-navigation -->
+    <nav class="subnav fullwidth">
+      <div class="container">
+        <a href="index.html">Вернуться на главную</a>
+        <a href="#flowers">Цветы</a>
+        <a href="#bouquets">Букеты</a>
+        <a href="#plants">Комнатные растения</a>
+        <a href="#other">Дополнительно</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Catalog Section -->
+      <section id="flowers" class="products">
+        <h2 class="products__title">Каталог</h2>
+        <!-- Controls -->
+        <div class="catalog-controls">
+          <div class="control-sort">Сортировка по цене</div>
+          <label class="control-checkbox">
+            <input type="checkbox"> Уже собраны
+          </label>
+        </div>
+        <div class="products__grid">
+          <!-- Пример карточки -->
+          <div class="card">
+            <img src="products/product1.jpg" alt="Романтика роз">
+            <h3 class="card__title">Романтика роз</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">В корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product1.jpg" alt="Романтика роз">
+            <h3 class="card__title">Романтика роз</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">В корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product1.jpg" alt="Романтика роз">
+            <h3 class="card__title">Романтика роз</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">В корзину</button>
+          </div>
+		  <div class="card">
+            <img src="products/product1.jpg" alt="Романтика роз">
+            <h3 class="card__title">Романтика роз</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">В корзину</button>
+          </div>
+          <!-- Повторять карточки -->
+        </div>
+        <!-- Pagination -->
+        <div class="pagination">
+          <a href="#" class="page active">1</a>
+          <a href="#" class="page">2</a>
+          <a href="#" class="page">3</a>
+          <span class="dots">…</span>
+          <a href="#" class="page">10</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fullwidth">
+    <div class="container">
+      <div class="footer__columns">
+        <div class="footer__column">
+          <h3>О нас</h3>
+          <p>Мы создаем уникальные букеты с 2010 года. Наша миссия — радовать Ярославль.</p>
+        </div>
+        <div class="footer__column">
+          <h3>Категории</h3>
+          <a href="#">Каталог</a>
+          <a href="index.html">Главная</a>
+          <a href="#">Подарки</a>
+        </div>
+        <div class="footer__column">
+          <h3>Контакты</h3>
+          <p>+7 (980) 772 97-12</p>
+          <p>info@flowershop.ru</p>
+          <p>г. Ярославль, ул. Цветочная, д. 5</p>
+        </div>
+        <div class="footer__column">
+          <h3>Следите за нами</h3>
+          <a href="#">ВКонтакте</a>
+          <a href="#">Telegram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Веточка. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
