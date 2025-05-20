@@ -1,0 +1,376 @@
+## Проект: flower-shop-frontend
+```
+flower-shop/
+├── index.html
+└── css/
+    └── styles.css
+```
+
+---
+
+### 1. index.html
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Веточка — Flower Shop Ярославль</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="main">
+    <!-- Header -->
+    <header class="header fullwidth">
+      <div class="container">
+        <div class="header__left">
+          <img src="img/logo.jpg" alt="Веточка" class="logo">
+          <span class="shop-name">Веточка</span>
+        </div>
+        <div class="header__center">
+          <div class="search">
+            <input type="text" placeholder="Поиск цветов...">
+            <img src="img/loupe.svg" alt="Поиск" class="search__icon">
+          </div>
+        </div>
+        <div class="header__right">
+          <div class="contact">
+            <span class="contact__label">Свяжитесь с нами</span>
+            <a href="tel:+79807729712" class="contact__phone">+7 (980) 772 97-12</a>
+          </div>
+          <a href="#" class="icon-profile" aria-label="Профиль"></a>
+          <a href="#" class="icon-cart" aria-label="Корзина"></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-navigation -->
+    <nav class="subnav fullwidth">
+      <div class="container">
+        <a href="#about">О нас</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#builder">Сборка букета</a>
+        <a href="#reviews">Отзывы</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Promo Section -->
+      <section class="promo">
+        <h2 class="promo__title">Акции и специальные предложения</h2>
+        <div class="promo__slider">
+          <div class="promo__item">
+            <h3>Скидка 20% на все весенние букеты</h3>
+            <p>Успейте заказать до конца месяца</p>
+          </div>
+          <div class="promo__item">
+            <h3>Подарок — ваза в подарок</h3>
+            <p>При заказе от 3000 ₽</p>
+          </div>
+          <div class="promo__item">
+            <h3>Бесплатная доставка</h3>
+            <p>При заказе от 2000 ₽ по Ярославлю</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Grid -->
+      <section class="products">
+        <h2 class="products__title">Готовые букеты — доставка сегодня по Ярославлю</h2>
+        <div class="products__grid">
+          <div class="card">
+            <img src="products/product1.jpg" alt="Букет Романтика роз" />
+            <h3 class="card__title">Романтика роз</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product2.jpg" alt="Букет Летняя нежность" />
+            <h3 class="card__title">Летняя нежность</h3>
+            <p class="card__price">3 200 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product3.jpg" alt="Букет Золотой рассвет" />
+            <h3 class="card__title">Золотой рассвет</h3>
+            <p class="card__price">2 500 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product4.jpg" alt="Букет Белая магия" />
+            <h3 class="card__title">Белая магия</h3>
+            <p class="card__price">3 000 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fullwidth">
+    <div class="container">
+      <div class="footer__columns">
+        <div class="footer__column">
+          <h3>О нас</h3>
+          <p>Мы создаем уникальные букеты с 2010 года. Наша миссия — радовать Ярославль.</p>
+        </div>
+        <div class="footer__column">
+          <h3>Категории</h3>
+          <a href="#">Букеты</a>
+          <a href="#">Комнатные растения</a>
+          <a href="#">Подарки</a>
+        </div>
+        <div class="footer__column">
+          <h3>Контакты</h3>
+          <p>Телефон: +7 (980) 772 97-12</p>
+          <p>Email: info@flowershop.ru</p>
+          <p>Адрес: г. Ярославль, ул. Цветочная, д. 5</p>
+        </div>
+        <div class="footer__column">
+          <h3>Следите за нами</h3>
+          <a href="#">ВКонтакте</a>
+          <a href="#">Telegram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Веточка. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+```
+
+```css
+/* styles.css */
+:root {
+  --color-bg-start: #F4C7D9;
+  --color-bg-mid: #EFE4DD;
+  --color-bg-end: #F9F0EC;
+  --radius: 12px;
+  --shadow: 0 8px 20px -10px rgba(0,0,0,.15);
+  --font-heading: 'Playfair Display', serif;
+  --font-cursive: 'Great Vibes', cursive;
+  --font-text: 'Inter', sans-serif;
+  --container-max: 1200px;
+  --container-padding: 20px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-text);
+  color: #333;
+}
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+.main {
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-mid), var(--color-bg-end));
+  padding-bottom: 40px;
+}
+.header.fullwidth {
+  width: 100%;
+}
+.header.fullwidth .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+.header__left,
+.header__center,
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__left { flex: 2; }
+.header__center { flex: 1; justify-content: center; }
+.header__right { flex: 1; justify-content: flex-end; }
+.logo {
+  height: 60px;
+  margin-right: 12px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+.shop-name {
+  font-family: var(--font-cursive);
+  font-size: 28px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 16px;
+}
+.contact__label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.contact__phone {
+  font-size: 14px;
+  text-decoration: none;
+}
+.contact__phone:hover {
+  text-decoration: underline;
+}
+.icon-profile,
+.icon-cart,
+.icon-vk {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 16px;
+  opacity: 0.6;
+  transition: opacity .3s;
+}
+.icon-profile { background-image: url('../img/user.svg'); }
+.icon-cart { background-image: url('../img/cart.svg'); }
+.icon-vk { background-image: url('../img/vk.webp'); }
+.icon-profile:hover,
+.icon-cart:hover,
+.icon-vk:hover {
+  opacity: 1;
+}
+.search {
+  position: relative;
+}
+.search input {
+  width: 300px;
+  padding: 10px 40px 10px 12px;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  height: 48px;
+  font-size: 16px;
+}
+.search__icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+}
+.subnav.fullwidth { width: 100%; }
+.subnav.fullwidth .container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+}
+.subnav a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+}
+.subnav a:hover {
+  background: rgba(255,255,255,0.6);
+}
+.promo,
+.products {
+  padding: 40px 0;
+}
+.promo__title,
+.products__title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.promo__slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.promo__item {
+  padding: 60px 16px;
+  background: rgba(255,255,255,0.8);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-family: var(--font-heading);
+  font-size: 18px;
+  text-align: center;
+}
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.card {
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card__title {
+  font-family: var(--font-heading);
+  margin: 16px 0 10px;
+}
+.card__price {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.card__btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 16px;
+}
+.footer.fullwidth {
+  width: 100%;
+  background: #fff;
+}
+.footer {
+  padding: 40px 0;
+}
+.footer__columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.footer__column {
+  flex: 1;
+  min-width: 160px;
+}
+.footer__column h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.footer__column a,
+.footer__column p {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.footer__bottom {
+  text-align: center;
+  font-size: 13px;
+}
+```
