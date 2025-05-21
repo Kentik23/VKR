@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — Веточка</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Page Styles -->
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="main">
+    <!-- Header -->
+    <header class="header fullwidth">
+      <div class="container">
+        <div class="header__left">
+          <img src="img/logo.jpg" alt="Веточка" class="logo">
+          <span class="shop-name">Веточка</span>
+          <div class="contact">
+            <span class="contact__label">Свяжитесь с нами</span>
+            <a href="tel:+79807729712" class="contact__phone">+7 (980) 772 97-12</a>
+          </div>
+        </div>
+        <div class="header__center">
+          <div class="search">
+            <input type="text" placeholder="Поиск">
+            <img src="img/loupe.svg" alt="Поиск" class="search__icon">
+          </div>
+        </div>
+        <div class="header__right">
+          <a href="#" class="icon-profile" aria-label="Профиль"></a>
+          <a href="#" class="icon-cart" aria-label="Корзина"></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-navigation -->
+    <nav class="subnav fullwidth">
+      <div class="container">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="builder.html">Конструктор букета</a>
+      </div>
+    </nav>
+
+    <div class="container login-page">
+      <h2 class="login-title">Вход</h2>
+      <form class="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Пароль</label>
+          <input type="password" id="login-password" name="password" required>
+        </div>
+        <button type="submit" class="btn-submit">Войти</button>
+        <p class="register-link">Нет аккаунта? <a href="registration.html">Зарегистрироваться</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fullwidth">
+    <div class="container">
+      <div class="footer__columns">
+        <div class="footer__column">
+          <h3>О нас</h3>
+          <p>Мы создаем уникальные букеты с 2010 года. Наша миссия — радовать Ярославль.</p>
+        </div>
+        <div class="footer__column">
+          <h3>Категории</h3>
+          <a href="catalog.html">Каталог</a>
+          <a href="index.html">Главная</a>
+          <a href="#">Подарки</a>
+        </div>
+        <div class="footer__column">
+          <h3>Контакты</h3>
+          <p>+7 (980) 772 97-12</p>
+          <p>info@flowershop.ru</p>
+          <p>г. Ярославль, ул. Цветочная, д. 5</p>
+        </div>
+        <div class="footer__column">
+          <h3>Следите за нами</h3>
+          <a href="#">ВКонтакте</a>
+          <a href="#">Telegram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Веточка. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
