@@ -16,11 +16,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 // Пункты бокового меню
@@ -31,15 +32,9 @@ private val drawerItems = listOf(
     DrawerItem("Профиль", Icons.Default.Person)
 )
 
-// Статусы заказа (стали публичными для использования в OrderDetailScreen)
-val statusOptions = listOf(
-    "Принят в работу",
-    "Собирается",
-    "Передан в доставку",
-    "Завершён"
-)
-
 data class DrawerItem(val title: String, val icon: ImageVector)
+
+data class OrderItem(val name: String, val price: Double, val quantity: Int)
 
 data class Order(
     val number: String,
@@ -49,44 +44,44 @@ data class Order(
     val address: String,
     val comment: String
 ) {
-    val totalPrice: Double
-        get() = items.sumOf { it.price * it.quantity }
+    val totalPrice: Double get() = items.sumOf { it.price * it.quantity }
 }
 
-data class OrderItem(
-    val name: String,
-    val price: Double,
-    val quantity: Int
+val statusOptions = listOf(
+    "Принят в работу",
+    "Собирается",
+    "Передан в доставку",
+    "Завершён"
 )
 
 @Composable
-fun OrdersScreen(onItemSelected: (DrawerItem) -> Unit = {}) {
+fun OrdersScreen() {
     var selectedItem by remember { mutableStateOf(drawerItems[1]) }
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
     var selectedOrder by remember { mutableStateOf<Order?>(null) }
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
 
     // Генерация тестовых заказов
     val orders = remember {
-        List(10) { index ->
-            val daysOffset = (index / 3).toLong()
-            val hour = 9 + (index % 3) * 3
+        List(10) { idx ->
+            val daysOffset = (idx / 3).toLong()
+            val hour = 9 + (idx % 3) * 3
             val items = listOf(
-                OrderItem("Роза", 100.0, (index % 3) + 1),
-                OrderItem("Ландыш", 120.0, (index % 2) + 1),
-                OrderItem("Тюльпан", 80.0, (index % 4) + 1)
-            ).take((index % 3) + 1)
+                OrderItem("Роза", 100.0, (idx % 3) + 1),
+                OrderItem("Ландыш", 120.0, (idx % 2) + 1),
+                OrderItem("Тюльпан", 80.0, (idx % 4) + 1)
+            ).take((idx % 3) + 1)
             Order(
-                number = "#${1000 + index}",
+                number = "#${1000 + idx}",
                 items = items,
                 deliveryDateTime = LocalDateTime.now()
                     .plusDays(daysOffset)
                     .withHour(hour)
                     .withMinute(0)
                     .withSecond(0),
-                status = statusOptions[index % statusOptions.size],
-                address = "ул. Ленина, д.${index + 1}",
-                comment = "Комментарий к заказу ${index + 1}"
+                status = statusOptions[idx % statusOptions.size],
+                address = "ул. Ленина, д.${idx + 1}",
+                comment = "Комментарий к заказу ${idx + 1}"
             )
         }
     }
@@ -102,7 +97,7 @@ fun OrdersScreen(onItemSelected: (DrawerItem) -> Unit = {}) {
         drawerContent = {
             ModalDrawerSheet {
                 Text(
-                    text = "Меню",
+                    "Меню",
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier.padding(16.dp)
                 )
@@ -114,7 +109,7 @@ fun OrdersScreen(onItemSelected: (DrawerItem) -> Unit = {}) {
                         selected = item == selectedItem,
                         onClick = {
                             selectedItem = item
-                            onItemSelected(item)
+                            selectedOrder = null
                             scope.launch { drawerState.close() }
                         },
                         modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
@@ -125,78 +120,99 @@ fun OrdersScreen(onItemSelected: (DrawerItem) -> Unit = {}) {
     ) {
         Scaffold(
             topBar = {
-                if (selectedOrder == null) {
-                    CenterAlignedTopAppBar(
-                        navigationIcon = {
-                            IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                                Icon(Icons.Default.Menu, contentDescription = "Открыть меню")
-                            }
-                        },
-                        title = { Text("Активные заказы", fontSize = 20.sp) }
-                    )
-                } else {
-                    CenterAlignedTopAppBar(
-                        navigationIcon = {
-                            IconButton(onClick = { selectedOrder = null }) {
-                                Icon(Icons.Default.ArrowBack, contentDescription = "Назад")
-                            }
-                        },
-                        title = { Text("Заказ ${selectedOrder!!.number}", fontSize = 20.sp) }
-                    )
-                }
+                CenterAlignedTopAppBar(
+                    navigationIcon = {
+                        IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                            Icon(Icons.Default.Menu, contentDescription = "Меню")
+                        }
+                    },
+                    title = { Text(selectedItem.title, fontSize = 20.sp) }
+                )
             }
         ) { innerPadding ->
-            if (selectedOrder == null) {
-                // Список заказов
-                LazyColumn(
-                    state = rememberLazyListState(),
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding)
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    val dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-                    val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
-
-                    groupedOrders.forEach { (date, ordersOnDate) ->
-                        stickyHeader {
-                            Text(
-                                text = date.format(dateFormatter),
-                                style = MaterialTheme.typography.titleMedium.copy(fontSize = 18.sp),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .background(MaterialTheme.colorScheme.background)
-                                    .padding(vertical = 4.dp)
+            Box(
+                Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+            ) {
+                when (selectedItem.title) {
+                    "Активные заказы" -> {
+                        if (selectedOrder == null) {
+                            OrdersList(groupedOrders) { order ->
+                                selectedOrder = order
+                            }
+                        } else {
+                            OrderDetailScreen(
+                                order = selectedOrder!!,
+                                onStatusChange = { selectedOrder!!.status = it },
+                                onBack = { selectedOrder = null }
                             )
                         }
-                        items(ordersOnDate) { order ->
-                            Card(
-                                Modifier
-                                    .fillMaxWidth()
-                                    .clickable { selectedOrder = order }
-                            ) {
-                                Column(
-                                    Modifier.padding(12.dp),
-                                    verticalArrangement = Arrangement.spacedBy(4.dp)
-                                ) {
-                                    Text(order.number, style = MaterialTheme.typography.titleMedium)
-                                    Text("Состав: ${order.items.sumOf { it.quantity }} позиций")
-                                    Text("Время доставки: ${order.deliveryDateTime.format(timeFormatter)}")
-                                    Text("Статус: ${order.status}")
-                                }
-                            }
-                        }
+                    }
+                    "Управление контентом" -> {
+                        ContentManagementScreen()
+                    }
+                    "Аналитика и отчёты" -> {
+                        AnalyticsScreen()
+                    }
+                    "Профиль" -> {
+                        Text("Экран профиля", modifier = Modifier.align(Alignment.Center))
                     }
                 }
-            } else {
-                // Экран деталей заказа
-                OrderDetailScreen(
-                    order = selectedOrder!!,
-                    onStatusChange = { newStatus -> selectedOrder!!.status = newStatus },
-                    onBack = { selectedOrder = null }
-                )
             }
         }
     }
+}
+
+@Composable
+fun OrdersList(
+    groupedOrders: Map<LocalDate, List<Order>>,
+    onOrderClick: (Order) -> Unit
+) {
+    val dateFmt = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+    val timeFmt = DateTimeFormatter.ofPattern("HH:mm")
+
+    LazyColumn(
+        state = rememberLazyListState(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+    ) {
+        groupedOrders.forEach { (date, ordersOnDate) ->
+            stickyHeader {
+                Text(
+                    date.format(dateFmt),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(vertical = 4.dp)
+                )
+            }
+            items(ordersOnDate) { order ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onOrderClick(order) }
+                ) {
+                    Column(
+                        Modifier.padding(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        Text(order.number, style = MaterialTheme.typography.titleMedium)
+                        Text("Состав: ${order.items.sumOf { it.quantity }} позиций")
+                        Text("Время доставки: ${order.deliveryDateTime.format(timeFmt)}")
+                        Text("Статус: ${order.status}")
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OrdersScreenPreview() {
+    OrdersScreen()
 }
