@@ -514,3 +514,65 @@ body {
   font-family: var(--font-heading);
   font-size: 20px;
 }
+/* About & Reviews styles */
+.about {
+  padding: 60px 0;
+}
+.about h2 {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.about__img {
+  flex: 1;
+  max-width: 400px;
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.about__text {
+  flex: 2;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.reviews {
+  padding: 60px 0;
+  background: rgba(255,255,255,0.9);
+}
+.reviews h2 {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+.review-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.review-item {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  font-style: italic;
+}
+.review-item p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.review-item span {
+  display: block;
+  text-align: right;
+  font-weight: bold;
+  font-size: 14px;
+}
