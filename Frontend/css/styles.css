@@ -231,6 +231,10 @@ body {
 
 /* новые стили для catalog.html */
 .catalog-controls {
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,6 +258,50 @@ body {
   gap: 6px;
   font-size: 16px;
   cursor: pointer;
+}
+/* Catalog Page specific styles */
+/* --- Catalog Controls (внутри .container) --- */
+.catalog-controls {
+  display: flex;
+  justify-content: center;  /* выравнивание влево */
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.control-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.control__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.control-select {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.control-select label {
+  margin-bottom: 4px;
+}
+
+.control-select select {
+  padding: 8px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+}
+
+.control-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
 }
 
 /* Footer */

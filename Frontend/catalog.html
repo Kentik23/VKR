@@ -46,35 +46,143 @@
       </div>
     </nav>
 
-    <div class="container">
-      <!-- Catalog Section -->
-      <section id="flowers" class="products">
-        <h2 class="products__title">Каталог</h2>
-
-        <!-- Controls -->
-        <div class="catalog-controls">
-          <div class="control-sort">
-            <img src="img/sort.svg" alt="Сортировка" class="control__icon">
-            <span>Сортировка по цене</span>
-          </div>
-          <label class="control-checkbox">
-            <input type="checkbox"> Уже собраны
-          </label>
+	<div class="container">
+      <!-- Панель настроек внутри контейнера -->
+      <div class="catalog-controls">
+        <div class="control-sort">
+          <img src="img/sort.svg" alt="Сортировка" class="control__icon">
+          <span>Сортировать:</span>
         </div>
+        <div class="control-select">
+          <label for="sort-price">По цене</label>
+          <select id="sort-price">
+            <option value="asc">По возрастанию</option>
+            <option value="desc">По убыванию</option>
+          </select>
+        </div>
+        <div class="control-select">
+          <label for="sort-popularity">По популярности</label>
+          <select id="sort-popularity">
+            <option value="high">Сначала популярные</option>
+            <option value="low">Сначала непопулярные</option>
+          </select>
+        </div>
+        <div class="control-select">
+          <label for="sort-name">По названию</label>
+          <select id="sort-name">
+            <option value="a-z">A–Я</option>
+            <option value="z-a">Я–A</option>
+          </select>
+        </div>
+        <label class="control-checkbox">
+          <input type="checkbox" id="in-stock"> В наличии
+        </label>
+      </div>
 
-        <!-- Grid 4 columns always -->
+      <!-- Сетка товаров без заголовка -->
+      <section class="products">
         <div class="products__grid grid-4">
           <!-- Карточки товара -->
           <div class="card">
-            <img src="products/product1.jpg" alt="Романтика роз">
-            <h3 class="card__title">Романтика роз</h3>
+            <img src="products/product1.jpg" alt="Букет Романтика роз" />
+            <h3 class="card__title">Облачко из гипсофил</h3>
             <p class="card__price">2 800 ₽</p>
-            <button class="card__btn">В корзину</button>
+            <button class="card__btn">Добавить в корзину</button>
           </div>
-          <!-- Повторять карточки -->
+          <div class="card">
+            <img src="products/product2.jpg" alt="Букет Летняя нежность" />
+            <h3 class="card__title">Пинк мондиаль</h3>
+            <p class="card__price">3 200 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product3.jpg" alt="Букет Золотой рассвет" />
+            <h3 class="card__title">Дельфиниумы</h3>
+            <p class="card__price">2 500 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product4.jpg" alt="Букет Белая магия" />
+            <h3 class="card__title">51 лавандовая роза</h3>
+            <p class="card__price">3 000 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+		            <div class="card">
+            <img src="products/product1.jpg" alt="Букет Романтика роз" />
+            <h3 class="card__title">Облачко из гипсофил</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product2.jpg" alt="Букет Летняя нежность" />
+            <h3 class="card__title">Пинк мондиаль</h3>
+            <p class="card__price">3 200 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product3.jpg" alt="Букет Золотой рассвет" />
+            <h3 class="card__title">Дельфиниумы</h3>
+            <p class="card__price">2 500 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product4.jpg" alt="Букет Белая магия" />
+            <h3 class="card__title">51 лавандовая роза</h3>
+            <p class="card__price">3 000 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+		            <div class="card">
+            <img src="products/product1.jpg" alt="Букет Романтика роз" />
+            <h3 class="card__title">Облачко из гипсофил</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product2.jpg" alt="Букет Летняя нежность" />
+            <h3 class="card__title">Пинк мондиаль</h3>
+            <p class="card__price">3 200 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product3.jpg" alt="Букет Золотой рассвет" />
+            <h3 class="card__title">Дельфиниумы</h3>
+            <p class="card__price">2 500 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product4.jpg" alt="Букет Белая магия" />
+            <h3 class="card__title">51 лавандовая роза</h3>
+            <p class="card__price">3 000 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+		            <div class="card">
+            <img src="products/product1.jpg" alt="Букет Романтика роз" />
+            <h3 class="card__title">Облачко из гипсофил</h3>
+            <p class="card__price">2 800 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product2.jpg" alt="Букет Летняя нежность" />
+            <h3 class="card__title">Пинк мондиаль</h3>
+            <p class="card__price">3 200 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product3.jpg" alt="Букет Золотой рассвет" />
+            <h3 class="card__title">Дельфиниумы</h3>
+            <p class="card__price">2 500 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>
+          <div class="card">
+            <img src="products/product4.jpg" alt="Букет Белая магия" />
+            <h3 class="card__title">51 лавандовая роза</h3>
+            <p class="card__price">3 000 ₽</p>
+            <button class="card__btn">Добавить в корзину</button>
+          </div>			
+          <!-- … ещё карточки … -->
         </div>
 
-        <!-- Pagination -->
+        <!-- Пагинация -->
         <div class="pagination">
           <a href="#" class="page active">1</a>
           <a href="#" class="page">2</a>
@@ -84,7 +192,6 @@
         </div>
       </section>
     </div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer fullwidth">
