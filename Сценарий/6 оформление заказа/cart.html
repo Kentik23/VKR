@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина — Веточка</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Playfair+Display:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="main">
+    <!-- Header -->
+    <header class="header fullwidth">
+      <div class="container">
+        <div class="header__left">
+          <img src="img/logo.jpg" alt="Веточка" class="logo">
+          <span class="shop-name">Веточка</span>
+          <div class="contact">
+            <span class="contact__label">Свяжитесь с нами</span>
+            <a href="tel:+79807729712" class="contact__phone">+7 (980) 772 97-12</a>
+          </div>
+        </div>
+        <div class="header__center">
+          <div class="search">
+            <input type="text" placeholder="Поиск">
+            <img src="img/loupe.svg" alt="Поиск" class="search__icon">
+          </div>
+        </div>
+        <div class="header__right">
+          <a href="#" class="icon-profile" aria-label="Профиль"></a>
+          <a href="#" class="icon-cart" aria-label="Корзина">
+			  <span class="cart-badge">2</span>
+			</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-navigation -->
+    <nav class="subnav fullwidth">
+      <div class="container">
+        <a href="index.html">Вернуться на главную</a>
+        <a href="catalog.html">Каталог</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Cart Section -->
+      <section class="cart">
+        <h2 class="products__title">Ваша корзина</h2>
+        <div class="cart__list">
+          <!-- Cart item example -->
+          <div class="cart__item">
+            <img src="products/product3.jpg" alt="Романтика роз" class="cart__img">
+            <div class="cart__details">
+              <h3>Дельфиниумы</h3>
+              <p>2 500 ₽</p>
+              <div class="cart__quantity">
+                <button class="qty-btn">−</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+            <button class="cart__remove" aria-label="Удалить">×</button>
+          </div>
+		  <div class="cart__item">
+            <img src="products/preview-buket.jpg" alt="Романтика роз" class="cart__img">
+            <div class="cart__details">
+              <h3>Настраиваемый букет №1</h3>
+              <p>1 350 ₽</p>
+              <div class="cart__quantity">
+                <button class="qty-btn">−</button>
+                <span class="qty-number">1</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+            <button class="cart__remove" aria-label="Удалить">×</button>
+          </div>
+          <!-- Повторять по товарам -->
+        </div>
+        <div class="cart__summary">
+          <p>Итого: <span class="total-price">3 850 ₽</span></p>
+          <button class="checkout-btn">Перейти к оплате</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer fullwidth">
+    <div class="container">
+      <div class="footer__columns">
+        <div class="footer__column">
+          <h3>О нас</h3>
+          <p>Мы создаем уникальные букеты с 2010 года. Наша миссия — радовать Ярославль.</p>
+        </div>
+        <div class="footer__column">
+          <h3>Категории</h3>
+          <a href="catalog.html">Каталог</a>
+          <a href="index.html">Главная</a>
+          <a href="#">Подарки</a>
+        </div>
+        <div class="footer__column">
+          <h3>Контакты</h3>
+          <p>+7 (980) 772 97-12</p>
+          <p>info@flowershop.ru</p>
+          <p>г. Ярославль, ул. Цветочная, д. 5</p>
+        </div>
+        <div class="footer__column">
+          <h3>Следите за нами</h3>
+          <a href="#">ВКонтакте</a>
+          <a href="#">Telegram</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 Веточка. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
