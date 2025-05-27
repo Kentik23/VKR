@@ -34,7 +34,7 @@ private val drawerItems = listOf(
 
 data class DrawerItem(val title: String, val icon: ImageVector)
 
-data class OrderItem(val name: String, val price: Double, val quantity: Int)
+data class OrderItem(val name: String, val price: Double, val quantity: Int, val details: List<String>)
 
 data class Order(
     val number: String,
@@ -48,6 +48,7 @@ data class Order(
 }
 
 val statusOptions = listOf(
+    "В обработке",
     "Принят в работу",
     "Собирается",
     "Передан в доставку",
@@ -63,25 +64,39 @@ fun OrdersScreen() {
 
     // Генерация тестовых заказов
     val orders = remember {
-        List(10) { idx ->
-            val daysOffset = (idx / 3).toLong()
-            val hour = 9 + (idx % 3) * 3
+//        List(10) { idx ->
+//            val daysOffset = (idx / 3).toLong()
+//            val hour = 9 + (idx % 3) * 3
+//            val items = listOf(
+//                OrderItem("Роза", 100.0, (idx % 3) + 1),
+//                OrderItem("Ландыш", 120.0, (idx % 2) + 1),
+//                OrderItem("Тюльпан", 80.0, (idx % 4) + 1)
+//            ).take((idx % 3) + 1)
+//            Order(
+//                number = "#${1000 + idx}",
+//                items = items,
+//                deliveryDateTime = LocalDateTime.now()
+//                    .plusDays(daysOffset)
+//                    .withHour(hour)
+//                    .withMinute(0)
+//                    .withSecond(0),
+//                status = statusOptions[idx % statusOptions.size],
+//                address = "ул. Ленина, д.${idx + 1}",
+//                comment = "Комментарий к заказу ${idx + 1}"
+//            )
+//        }
+        List(1) { idx ->
             val items = listOf(
-                OrderItem("Роза", 100.0, (idx % 3) + 1),
-                OrderItem("Ландыш", 120.0, (idx % 2) + 1),
-                OrderItem("Тюльпан", 80.0, (idx % 4) + 1)
-            ).take((idx % 3) + 1)
+                OrderItem("Букет \"Дельфиниумы\"", 2500.0, 1, listOf("3x Дельфиниум", "Розовая упаковка")),
+                OrderItem("Настраиваемый букет №1", 1350.0, 1, listOf("5x Красная роза", "4х Белая роза", "Белая бумага", "Красная лента"))
+            )
             Order(
                 number = "#${1000 + idx}",
                 items = items,
-                deliveryDateTime = LocalDateTime.now()
-                    .plusDays(daysOffset)
-                    .withHour(hour)
-                    .withMinute(0)
-                    .withSecond(0),
+                deliveryDateTime = LocalDateTime.of(2025, 4, 25, 14, 30),
                 status = statusOptions[idx % statusOptions.size],
-                address = "ул. Ленина, д.${idx + 1}",
-                comment = "Комментарий к заказу ${idx + 1}"
+                address = "г. Ярославль, ул. Гагарина, д.11",
+                comment = "Комментарий к заказу"
             )
         }
     }
