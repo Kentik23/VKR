@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter
 
 // Пункты бокового меню
 private val drawerItems = listOf(
-    DrawerItem("Управление контентом", Icons.Default.Settings),
+    DrawerItem("Управление магазином", Icons.Default.Settings),
     DrawerItem("Активные заказы", Icons.Default.ListAlt),
     DrawerItem("Аналитика и отчёты", Icons.Default.Assessment),
     DrawerItem("Профиль", Icons.Default.Person)

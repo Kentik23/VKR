@@ -2,6 +2,8 @@
 
 package ru.vetochkaadmin.ui
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,8 +16,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 
 /** ------------ модель ------------ **/
 data class Product(
@@ -23,7 +27,8 @@ data class Product(
     val name: String,
     val category: String,
     val price: Double,
-    val description: String
+    val description: String,
+    val imageUri: String? = null
 )
 
 @Composable
@@ -32,6 +37,7 @@ fun ManageProductsScreen() {
     val categories = listOf("Букеты", "Цветы", "Сопутствующие товары")
     var selectedCategory by remember { mutableStateOf(categories.first()) }
     var catExpanded by remember { mutableStateOf(false) }
+    var dlgImageUri by remember { mutableStateOf<String?>(null) }
 
     /* Cписок товаров */
     val products = remember {
@@ -41,6 +47,13 @@ fun ManageProductsScreen() {
             Product(3, "Комбинированный букет", "Букеты", 500.0, "5 красных роз, 5 белых роз, белая упаковка, красная лента"),
             Product(4, "Конфеты ассорти", "Сопутствующие товары", 200.0, "Подарочная коробка 200 г")
         )
+    }
+
+    /* ---------- launcher выбора изображения ---------- */
+    val pickImage = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri ->
+        dlgImageUri = uri?.toString()
     }
 
     /* состояния диалога */
@@ -197,29 +210,54 @@ fun ManageProductsScreen() {
                         label = { Text("Описание") },
                         modifier = Modifier.fillMaxWidth()
                     )
+                    // --- превью фото + кнопка выбрать ---
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(160.dp)
+                            .clickable { pickImage.launch("image/*") },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        if (dlgImageUri == null) {
+                            Text("Нажмите, чтобы выбрать фото")
+                        } else {
+                            AsyncImage(
+                                model = dlgImageUri,
+                                contentDescription = null,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+                    }
                 }
             },
             confirmButton = {
                 TextButton(onClick = {
-                    val priceVal = dlgPrice.toDoubleOrNull() ?: 0.0
+                    val price = dlgPrice.toDoubleOrNull() ?: 0.0
                     if (editing == null) {
                         val newId = (products.maxOfOrNull { it.id } ?: 0) + 1
-                        products.add(Product(newId, dlgName, dlgCategory, priceVal, dlgDesc))
+                        products += Product(
+                            id = newId,
+                            name = dlgName,
+                            category = dlgCategory,
+                            price = price,
+                            description = dlgDesc,
+                            imageUri = dlgImageUri             // ← сохраняем
+                        )
                     } else {
                         val idx = products.indexOf(editing)
                         products[idx] = editing!!.copy(
                             name = dlgName,
                             category = dlgCategory,
-                            price = priceVal,
-                            description = dlgDesc
+                            price = price,
+                            description = dlgDesc,
+                            imageUri = dlgImageUri
                         )
                     }
                     showDialog = false
                 }) { Text("Сохранить") }
             },
-            dismissButton = {
-                TextButton(onClick = { showDialog = false }) { Text("Отмена") }
-            }
+            dismissButton = { TextButton(onClick = { showDialog = false }) { Text("Отмена") } }
         )
     }
 }
