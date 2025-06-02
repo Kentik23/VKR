@@ -1,0 +1,35 @@
+%% Vetochka Online – общая архитектура
+flowchart LR
+    subgraph Внешние_пользователи
+        Customer([Покупатель])
+        Admin([Администратор/Курьер])
+    end
+
+    subgraph Frontend["Frontend-клиенты"]
+        direction TB
+        WebPWA[/"Web<br>(React + Vite)"/]
+        AdminUI[/"Admin PWA<br>(PWA)"/]
+        iDB[(IndexedDB)]
+    end
+
+    subgraph Backend["Backend & Services"]
+        direction TB
+        API[["API Server<br>(Spring Boot)"]]
+        DB[(PostgreSQL)]
+    end
+
+    subgraph External["Внешние сервисы"]
+        AI["AI Renderer<br>(Kandinsky)"]
+    end
+
+    %% Взаимодействия
+    Customer  -- HTTPS --> WebPWA
+    Admin     -- HTTPS / Offline --> AdminUI
+
+    WebPWA    -- REST --> API
+    AdminUI   -- REST --> API
+
+    AdminUI -- s --> iDB
+
+    API -- SQL --> DB
+    API -- REST --> AI
